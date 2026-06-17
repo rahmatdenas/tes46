@@ -30,17 +30,22 @@
   </div>
   <section id="index" class="panel-content" data-display="flex">
 <header>
-<div style="display:flex; gap:15px;">
+<div style="display:flex; gap:15px; flex-wrap:wrap;">
 
-  <!-- Dropdown Wilayah -->
-  <div class="filter-box" style="flex:2;">
+  <div class="filter-box" style="flex:2; min-width:120px;">
     <select id="filter-region">
       <option value="all">Semua Wilayah – </option>
     </select>
   </div>
 
-  <!-- Dropdown Urutan -->
-  <div class="filter-box" style="flex:1;">
+  <div class="filter-box" style="flex:1.5; min-width:120px;">
+    <select id="filter-usia">
+      <option value="all">Semua Status</option>
+      <option value="klaster_penting">Masjid Besar/Agung/Jami</option>
+      </select>
+  </div>
+
+  <div class="filter-box" style="flex:1; min-width:100px;">
     <select id="sort-order">
       <option value="alphabetical">Abjad</option>
       <option value="age">Usia (Tertua)</option>
