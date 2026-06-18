@@ -253,8 +253,6 @@ function generateFigure(filename, classNames = []) {
         format : 'json',
         prop   : 'imageinfo',
         iiprop : 'extmetadata',
-        extmetadatalanguage: 'id', // Meminta nilai metadata dalam bahasa Indonesia
-        uselang: 'id',             // Meminta pesan sistem dalam bahasa Indonesia
         titles : 'File:' + filename,
       },
       function(data) {
@@ -269,9 +267,8 @@ function generateFigure(filename, classNames = []) {
             artistHtml = artistHtml.replace(/<(?!\/?a ?)[^>]+>/g, '');
             
             // 2. KOREKSI TEKS GANDA: Bersihkan masalah "Unknown author" dari Wikimedia
-          artistHtml = artistHtml.replace(/Tak diketahuiTak diketahui/gi, 'Tak diketahui');
-            artistHtml = artistHtml.replace(/Unknown authorUnknown author/gi, 'Unknown author');
-            artistHtml = artistHtml.replace(/UnknownUnknown/gi, 'Unknown'); // Jaga-jaga jika formatnya hanya "Unknown"
+            artistHtml = artistHtml.replace(/Unknown authorUnknown author/gi, 'Tak diketahui');
+            artistHtml = artistHtml.replace(/UnknownUnknown/gi, 'Tak diketahui'); // Jaga-jaga jika formatnya hanya "Unknown"
             
             // 3. Ubah tautan relatif menjadi absolut
             if (artistHtml.search('href="//') >= 0) {
