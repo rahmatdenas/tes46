@@ -36,12 +36,11 @@ function init() {
   Map.on('popupopen', function(e) { displayRecordDetails(e.popup._qid) });
 }
 
-
 // Initializes the Leaflet-based map.
 function initMap() {
 
-  // Create map and set initial view
-  Map = new L.map('map');
+  // 1. MATIKAN ZOOM OTOMATIS: Tambahkan { zoomControl: false } di sini
+  Map = new L.map('map', { zoomControl: false });
   Map.fitBounds([[MAX_PH_LAT, MAX_PH_LON], [MIN_PH_LAT, MIN_PH_LON]]);
 
   // Add tile layers
@@ -57,19 +56,26 @@ function initMap() {
     'CARTO Voyager'       : cartoLayer,
     'OpenStreetMap Carto' : osmLayer,
   };
+  
+  // Tombol Layer dibiarkan utuh di posisi aslinya (topleft)
   L.control.layers(baseMaps, null, {position: 'topleft'}).addTo(Map);
 
- // Lokasi saya
+  // ========================================================
+  // 2. TAMBAHKAN ZOOM MANUAL DI KANAN BAWAH
+  L.control.zoom({
+    position: 'bottomright'
+  }).addTo(Map);
+
+  // Lokasi saya (Otomatis akan menumpuk di bawah tombol Zoom)
   L.control.locate({
-    position: 'bottomright', // Posisinya di bawah tombol zoom/layer
+    position: 'bottomright',
     showCompass: false,
     strings: {
         title: "Tunjukkan lokasi saya"
     }
-  }).addTo(Map); // Menggunakan huruf 'M' besar sesuai variabel Anda
+  }).addTo(Map);
   // ========================================================
 
-  
   // Add powered by Wikidata map control
   let powered = L.control({ position: 'bottomleft' });
   powered.onAdd = function(Map) {
