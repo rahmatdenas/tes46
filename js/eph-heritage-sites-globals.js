@@ -81,30 +81,30 @@ const KUMPULAN_KUERI_0 = {
 // KAMUS KUERI 1 (MENARIK KOORDINAT)
 // ==========================================
 const KUMPULAN_KUERI_1 = {
-  'general': `SELECT DISTINCT ?siteQid ?coord WHERE {
+  'general': `SELECT ?siteQid (SAMPLE(?coord) AS ?coord) WHERE {
     VALUES ?site { <PLACEHOLDER_QIDS> }
     ?site p:P625 ?coordStatement .
     ?coordStatement ps:P625 ?coord .
     FILTER NOT EXISTS { ?coordStatement pq:P518 ?x }
     BIND (SUBSTR(STR(?site), 32) AS ?siteQid) .
-  }`,
+  } GROUP BY ?siteQid`,
   
-  'pers': `SELECT DISTINCT ?siteQid ?coord WHERE {
+  'pers': `SELECT ?siteQid (SAMPLE(?coord) AS ?coord) WHERE {
     VALUES ?site { <PLACEHOLDER_QIDS> }
     ?site wdt:P159 ?kantor .
     ?kantor p:P625 ?coordStatement .
     ?coordStatement ps:P625 ?coord .
     FILTER NOT EXISTS { ?coordStatement pq:P518 ?x }
     BIND (SUBSTR(STR(?site), 32) AS ?siteQid) .
-  }`,
+  } GROUP BY ?siteQid`,
   
-  'wilayah': `SELECT DISTINCT ?siteQid ?coord WHERE {
+  'wilayah': `SELECT ?siteQid (SAMPLE(?coord) AS ?coord) WHERE {
     VALUES ?site { <PLACEHOLDER_QIDS> }
     ?site p:P625 ?coordStatement .
     ?coordStatement ps:P625 ?coord .
     FILTER NOT EXISTS { ?coordStatement pq:P518 ?x }
     BIND (SUBSTR(STR(?site), 32) AS ?siteQid) .
-  }`
+  } GROUP BY ?siteQid`
 };
 
 // ==========================================
