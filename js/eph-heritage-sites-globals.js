@@ -1,6 +1,6 @@
 'use strict';
 
-const BASE_TITLE = 'WikiSurau';
+const BASE_TITLE = 'WikiJelajah';
 
 const KUMPULAN_KUERI_0 = {
   'universal': `SELECT DISTINCT ?siteQid ?siteLabel ?provinsiQid ?provinsiLabel ?p131LokasiLabel ?tahunBerdiriMentah ?tahunPresisi
