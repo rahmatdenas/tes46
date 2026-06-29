@@ -479,6 +479,7 @@ function generateFigure(filename, title = "Situs", classNames = []) {
               artistHtml = artistHtml.replace(/<(?!\/?a ?)[^>]+>/g, '');
               artistHtml = artistHtml.replace(/Unknown authorUnknown author/gi, 'Tak diketahui');
               artistHtml = artistHtml.replace(/UnknownUnknown/gi, 'Tak diketahui');
+              artistHtml = artistHtml.replace(/AnonymousUnknown author/gi, 'Anonim');
               if (artistHtml.search('href="//') >= 0) {
                 artistHtml = artistHtml.replace(/href="(?:https?:)?\/\//g, 'href="https://');
               }
