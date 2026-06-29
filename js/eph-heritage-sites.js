@@ -1010,7 +1010,7 @@ let isBersejarah = false;
 
   // Daftar bangunan/struktur fisik yang masuk akal diberi label "Bersejarah"
   let klasterBisaBersejarah = [
-    'Masjid', 'Bangunan bersejarah', 'Gereja & katedral'
+    'Masjid', 'Gereja & katedral'
   ]; 
   
   let teksJudul = `Informasi ${currentNamaKlaster}`;
